@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.zotix.bdd</groupId>
+  <artifactId>simple-bdd-example</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>simple-bdd-example</name>
+  <url>http://maven.apache.org</url>
+  <repositories>
+      <repository>
+          <id>sonatype-snapshots</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+          <snapshots>
+              <enabled>true</enabled>
+          </snapshots>
+      </repository>
+  </repositories>
+
+
+  <properties>
+      <cucumber-picocontainer.version>1.1.1</cucumber-picocontainer.version>
+      <cucumber-junit.version>1.1.1</cucumber-junit.version>
+      <cucumber.version>1.1.1</cucumber.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+      <dependency>
+          <groupId>info.cukes</groupId>
+          <artifactId>cucumber-java</artifactId>
+          <version>${cucumber.version}</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>info.cukes</groupId>
+          <artifactId>cucumber-picocontainer</artifactId>
+          <version>${cucumber.version}</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>info.cukes</groupId>
+          <artifactId>cucumber-junit</artifactId>
+          <version>${cucumber.version}</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.11</version>
+          <scope>test</scope>
+      </dependency>
+  </dependencies>
+</project>
