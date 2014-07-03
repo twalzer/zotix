@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <parent>
+      <groupId>io.fabric8</groupId>
+      <artifactId>fabric-project</artifactId>
+      <version>1.1.0.CR1</version>
+   </parent>
+   <groupId>zoitx.maven.release</groupId>
+   <artifactId>parent</artifactId>
+   <version>1.0</version>
+   <packaging>pom</packaging>
+   <name>Parent</name>
+   <description />
+   <inceptionYear>2012</inceptionYear>
+   <scm>
+      <connection>scm:git:ssh://git@bitbucket.org:akhettar/zotix.git</connection>
+      <developerConnection>scm:git:ssh://git@bitbucket.org:akhettar/zotix.git</developerConnection>
+      <url>https://akhettar@bitbucket.org/akhettar/zotix.git</url>
+   </scm>
+   <modules>
+      <module>bundle-one</module>
+      <module>bundle-two</module>
+   </modules>
+   <build>
+      <defaultGoal>install</defaultGoal>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-release-plugin</artifactId>
+            <configuration>
+               <localCheckout>true</localCheckout>
+               <pushChanges>false</pushChanges>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+   <repositories>
+      <!-- default repo -->
+      <repository>
+         <id>repo1.maven</id>
+         <name>Maven Central Repo</name>
+         <url>http://repo1.maven.org/maven2/</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <repository>
+         <id>central</id>
+         <name>Central Repository</name>
+         <url>http://repo.maven.apache.org/maven2</url>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <!-- JAVA.net repo -->
+      <repository>
+         <id>java.net.m1</id>
+         <name>java.net Maven Repository</name>
+         <url>http://download.java.net/maven/1/</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <repository>
+         <id>java.net.m2</id>
+         <url>http://download.java.net/maven/2</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <repository>
+         <id>java.net2</id>
+         <name>java.net Maven Repository</name>
+         <url>http://download.java.net/maven/2/</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <!-- springsource repo -->
+      <repository>
+         <id>springsource-repo</id>
+         <name>SpringSource Repository</name>
+         <url>http://repo.springsource.org/release</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <!-- apache repo -->
+      <repository>
+         <id>apache-repo-releases</id>
+         <url>https://repository.apache.org/content/repositories/releases/</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <!-- apache servicemix repo -->
+      <repository>
+         <id>apache-servicemix-repo</id>
+         <url>http://svn.apache.org/repos/asf/servicemix/m2-repo</url>
+         <releases>
+            <enabled>false</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <!-- Scriptengines Google Maven Repository, required by scriptengines -->
+      <repository>
+         <id>scriptengines</id>
+         <name>Scriptengines Google Code Maven Repository</name>
+         <url>http://scriptengines.googlecode.com/svn/m2-repo</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <!-- ServiceMix Maven 2 repository: jsmpp 2.0 is not in central repo -->
+      <repository>
+         <id>servicemix.m2-repo</id>
+         <name>ServiceMix Maven 2 repository</name>
+         <url>http://svn.apache.org/repos/asf/servicemix/m2-repo</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <!-- apache repos -->
+      <repository>
+         <id>apache.snapshots</id>
+         <name>Apache Development Snapshot Repository</name>
+         <url>https://repository.apache.org/content/repositories/snapshots</url>
+         <releases>
+            <enabled>false</enabled>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+         </snapshots>
+      </repository>
+      <!-- Note: m2-snapshot is needed during CI builds -->
+      <repository>
+         <id>fusesource.m2-snapshot</id>
+         <name>FuseSource Community Snapshot Repository</name>
+         <url>https://repo.fusesource.com/nexus/content/groups/public-snapshots</url>
+         <snapshots>
+            <enabled>true</enabled>
+         </snapshots>
+         <releases>
+            <enabled>false</enabled>
+         </releases>
+      </repository>
+      <!-- Note: repo.fusesource.com is the correct repo for JBoss Fuse and it is not a mistake -->
+      <repository>
+         <id>fusesource.ea</id>
+         <name>JBoss Community Early Access Release Repository</name>
+         <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+         <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+         </releases>
+      </repository>
+      <repository>
+         <id>fusesource.m2</id>
+         <name>JBoss FS Public Repository Group</name>
+         <url>https://repo.fusesource.com/nexus/content/groups/public</url>
+         <layout>default</layout>
+         <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <repository>
+         <id>jboss-thirdparty-uploads</id>
+         <name>JBoss Thirdparty Uploads</name>
+         <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-uploads</url>
+         <layout>default</layout>
+         <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+         </snapshots>
+      </repository>
+      <repository>
+         <id>jboss-public-repository-group</id>
+         <name>JBoss Public Repository Group</name>
+         <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+         <layout>default</layout>
+         <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>daily</updatePolicy>
+         </snapshots>
+      </repository>
+      <!-- WSO2 repo -->
+      <repository>
+         <id>wso2-repo</id>
+         <url>http://dist.wso2.org/maven2/</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <!-- sonatype -->
+      <repository>
+         <id>sourceforge</id>
+         <url>http://oss.sonatype.org/content/groups/sourceforge/</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <repository>
+         <id>oss.sonatype.releases</id>
+         <url>http://oss.sonatype.org/content/repositories/releases</url>
+         <layout>default</layout>
+      </repository>
+      <!-- oracle repos -->
+      <!-- for the bdb je dependency -->
+      <repository>
+         <id>oracleReleases</id>
+         <url>http://download.oracle.com/maven</url>
+         <layout>default</layout>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </repository>
+      <repository>
+         <id>maven-restlet</id>
+         <name>Public online Restlet repository</name>
+         <url>http://maven.restlet.org</url>
+      </repository>
+   </repositories>
+   <pluginRepositories>
+      <!-- central repos -->
+      <pluginRepository>
+         <id>repo1.maven</id>
+         <name>Maven Central Repo</name>
+         <url>http://repo1.maven.org/maven2/</url>
+      </pluginRepository>
+      <pluginRepository>
+         <id>java.net.m1</id>
+         <name>java.net Maven Repository</name>
+         <url>http://download.java.net/maven/1/</url>
+      </pluginRepository>
+      <pluginRepository>
+         <id>java.net.m2</id>
+         <name>java.net Maven Repository</name>
+         <url>http://download.java.net/maven/2/</url>
+      </pluginRepository>
+      <!-- apache repositories -->
+      <pluginRepository>
+         <id>apache.releases</id>
+         <name>Apache Releases Repository</name>
+         <url>https://repository.apache.org/content/repositories/releases</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </pluginRepository>
+      <pluginRepository>
+         <id>apache.snapshots</id>
+         <name>Apache Development Snapshot Repository</name>
+         <url>https://repository.apache.org/content/repositories/snapshots</url>
+         <releases>
+            <enabled>false</enabled>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+         </snapshots>
+      </pluginRepository>
+      <!-- Note: repo.fusesource.com is the correct repo for JBoss Fuse and it is not a mistake -->
+      <pluginRepository>
+         <id>fusesource.m2</id>
+         <name>FuseSource Community Release Repository</name>
+         <url>https://repo.fusesource.com/nexus/content/groups/public</url>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+         <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+         </releases>
+      </pluginRepository>
+      <pluginRepository>
+         <id>fusesource.ea</id>
+         <name>FuseSource Community Early Access Release Repository</name>
+         <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+         <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+         </releases>
+      </pluginRepository>
+   </pluginRepositories>
+   <reporting>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>${maven-javadoc-plugin.version}</version>
+         </plugin>
+      </plugins>
+   </reporting>
+   <profiles>
+      <profile>
+         <id>setup.eclipse</id>
+         <modules>
+            <module>assembly</module>
+         </modules>
+         <properties>
+            <eclipse.workspace.dir>${basedir}/../workspace</eclipse.workspace.dir>
+         </properties>
+         <build>
+            <defaultGoal>eclipse:eclipse</defaultGoal>
+            <plugins>
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-eclipse-plugin</artifactId>
+                  <inherited>false</inherited>
+                  <executions>
+                     <execution>
+                        <id>setup.eclipse.workspace</id>
+                        <phase>process-test-sources</phase>
+                        <goals>
+                           <goal>add-maven-repo</goal>
+                        </goals>
+                        <configuration>
+                           <workspace>${eclipse.workspace.dir}</workspace>
+                        </configuration>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+   </profiles>
+   <distributionManagement>
+      <repository>
+         <id>artifactory</id>
+         <name>artifactory-releases</name>
+         <url>http://192.168.21.5:8081/artifactory/releases-local</url>
+      </repository>
+      <snapshotRepository>
+         <id>artifactory</id>
+         <name>artifactory-snapshots</name>
+         <url>http://192.168.21.5:8081/artifactory/snapshots-local</url>
+      </snapshotRepository>
+   </distributionManagement>
+</project>
