@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>co.zotix.schematron</groupId>
+  <artifactId>schematron-blueprint-camel</artifactId>
+  <packaging>bundle</packaging>
+  <version>1.0.0</version>
+
+  <name>Camel Blueprint Route</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+      <apache-karaf.version>2.4.1</apache-karaf.version>
+
+      <schematron.osgi.version>${project.version}</schematron.osgi.version>
+      <schematron.osgi.bundle.name>${project.groupId}.${project.artifactId}</schematron.osgi.bundle.name>
+      <schematron.osgi.import.fabric.version>version="[$(version;==;${schematron.osgi.version}),$(version;=+;${schematron.osgi.version}))"</schematron.osgi.import.fabric.version>
+      <schematron.osgi.import.strict.version>version="[$(version;===;${schematron.osgi.version}),$(version;==+;${schematron.osgi.version}))"</schematron.osgi.import.strict.version>
+      <schematron.osgi.import.default.version>[$(version;==;$(@)),$(version;+;$(@)))</schematron.osgi.import.default.version>
+
+
+      <messagebus.osgi.activator>co.zotix.schematron.Activator</messagebus.osgi.activator>
+      <schematron.osgi.failok>false</schematron.osgi.failok>
+      <schematron.osgi.private.pkg>!*</schematron.osgi.private.pkg>
+      <schematron.osgi.export>${project.groupId}.${project.artifactId}.*;version=${schematron.osgi.version};-noimport:=true</schematron.osgi.export>
+      <schematron.osgi.split.pkg>-split-package:=first</schematron.osgi.split.pkg>
+      <schematron.osgi.import>org.osgi.service.blueprint;version="[1.0.0,2.0.0)",org.apache.camel, org.apache.camel.builder, org.apache.camel.model, org.apache.camel.model.rest,org.osgi.framework, org.slf4j</schematron.osgi.import>
+      <schematron.osgi.dynamic/>
+      <schematron.osgi.symbolic.name>${project.groupId}.${project.artifactId}</schematron.osgi.symbolic.name>
+      <schematron.osgi.exclude.dependencies>false</schematron.osgi.exclude.dependencies>
+      <schematron.osgi.resource>{maven-resources}</schematron.osgi.resource>
+      <schematron.osgi.services.export />
+      <schematron.osgi.embed.dependency>!*</schematron.osgi.embed.dependency>
+
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-core</artifactId>
+      <version>2.14.1</version>
+    </dependency>
+      <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-restlet</artifactId>
+          <version>2.14.1</version>
+      </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-blueprint</artifactId>
+      <version>2.14.1</version>
+    </dependency>
+
+      <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-schematron</artifactId>
+          <version>2.14.1</version>
+      </dependency>
+
+    <!-- logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.12</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.12</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+
+
+    <!-- Testing & Camel Plugin -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-test-blueprint</artifactId>
+      <version>2.14.1</version>
+    </dependency>
+      <dependency>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+          <version>2.4</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>xmlunit</groupId>
+          <artifactId>xmlunit</artifactId>
+          <version>1.5</version>
+          <scope>test</scope>
+      </dependency>
+  </dependencies>
+
+  <build>
+    <defaultGoal>install</defaultGoal>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+
+
+        <plugin>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>maven-bundle-plugin</artifactId>
+            <version>2.3.7</version>
+            <extensions>true</extensions>
+            <configuration>
+                <excludeDependencies>${schematron.osgi.exclude.dependencies}</excludeDependencies>
+                <instructions>
+                    <Bundle-Name>${schematron.osgi.bundle.name}</Bundle-Name>
+                    <Bundle-SymbolicName>${schematron.osgi.symbolic.name}</Bundle-SymbolicName>
+                    <Bundle-Activator>${schematron.osgi.activator}</Bundle-Activator>
+                    <Export-Package>${schematron.osgi.export}</Export-Package>
+                    <Import-Package>${schematron.osgi.import}</Import-Package>
+                    <DynamicImport-Package>${schematron.osgi.dynamic}</DynamicImport-Package>
+                    <Private-Package>co.zotix.schematron.*</Private-Package>
+                    <Implementation-Title>INPS.co.uk</Implementation-Title>
+                    <Implementation-Version>${project.version}</Implementation-Version>
+                    <Include-Resource>${schematron.osgi.resource}</Include-Resource>
+                    <_versionpolicy>${schematron.osgi.import.default.version}</_versionpolicy>
+                    <_failok>${schematron.osgi.failok}</_failok>
+                    <Export-Service>${schematron.osgi.services.export}</Export-Service>
+                    <Embed-Dependency>${schematron.osgi.embed.dependency}</Embed-Dependency>
+                    <Include-Resource>
+                        sch/schematron.sch=${basedir}/target/classes/sch/schematron.sch,
+                        log4j.properties=${basedir}/target/classes/log4j.properties
+                    </Include-Resource>
+                </instructions>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>cleanVersions</id>
+                    <phase>generate-sources</phase>
+                    <goals>
+                        <goal>cleanVersions</goal>
+                    </goals>
+                    <configuration>
+                        <versions>
+                            <karaf.osgi.version>${apache-karaf.version}</karaf.osgi.version>
+                        </versions>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+        <!-- Attach featurs.xml alongside the jar in Maven repository -->
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+                <execution>
+                    <id>attach-artifacts</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>attach-artifact</goal>
+                    </goals>
+                    <configuration>
+                        <artifacts>
+                            <artifact>
+                                <file>src/main/features/features.xml</file>
+                                <type>xml</type>
+                                <classifier>features</classifier>
+                            </artifact>
+                        </artifacts>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+
+       <!-- to run the example using mvn camel:run -->
+      <plugin>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-maven-plugin</artifactId>
+        <version>2.15.2</version>
+        <configuration>
+          <useBlueprint>true</useBlueprint>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

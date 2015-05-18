@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                        xmlns:iso="http://purl.oclc.org/dsdl/schematron"
+                        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+                        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                        xmlns:saxon="http://saxon.sf.net/"
+                        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                        xmlns:dp="http://www.dpawson.co.uk/ns#"
+                        xmlns:schold="http://www.ascc.net/xml/schematron"
+                        schemaVersion="ISO19757-3"
+                        title="Test ISO schematron file. Introduction mode"><!--   
+		   
+		   
+		 -->
+   <svrl:ns-prefix-in-attribute-values prefix="dp" uri="http://www.dpawson.co.uk/ns#"/>
+   <svrl:active-pattern document=""/>
+   <svrl:fired-rule context="chapter"/>
+   <svrl:fired-rule context="chapter"/>
+   <svrl:fired-rule context="chapter"/>
+</svrl:schematron-output>
