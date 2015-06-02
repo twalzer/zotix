@@ -23,12 +23,12 @@ To Run some examples: Navigate to the project directory and run the post request
 
 Success
 
-curl -v -H "Content-Type: application/xml" -X POST --data "@src/test/resources/input.xml" -u login:password http://localhost:9090/schematron/validate
+curl -v -H "Content-Type: application/xml" -X POST --data "@src/test/resources/input.xml" http://localhost:9090/schematron/validate
 
 
 Failure
 
-curl -v -H "Content-Type: application/xml" -X POST --data "@src/test/resources/input-error.xml" -u login:password http://localhost:9090/schematron/validate
+curl -v -H "Content-Type: application/xml" -X POST --data "@src/test/resources/input-error.xml" http://localhost:9090/schematron/validate
 
 
 
