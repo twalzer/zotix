@@ -11,9 +11,8 @@
         <cm:default-properties>
 			<!-- Endpoint Configuration -->
             <cm:property name="schematron.endpoint" value="schematron://sch/schematron.sch" />
-            <cm:property name="file.input" value="file:///tmp/input" />
-            <cm:property name="file.output" value="file:///tmp/output" />
             <cm:property name="rest.port" value="9090" />
+            <cm:property name="rest.host" value="localhost" />
             <cm:property name="prefix" value="Blueprint-Example" />
 
 		</cm:default-properties>

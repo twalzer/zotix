@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="scheamtron.sample">
+
+        <!-- explicitly set properties locations in blueprint -->
+        <propertyPlaceholder id="properties" location="blueprint:co.zotix.schematron.config"/>
+
+
+        <restConfiguration  contextPath="rest" component="netty-http" host="{{rest.host}}" port="{{rest.port}}" />
+
+        <rest path="/schematron">
+            <post uri="/validate">
+                <to uri="direct:validate" />
+            </post>
+        </rest>
+
+        <route id="schematron.validation">
+            <from uri="direct:validate"/>
+            <to uri="{{schematron.endpoint}}"/>
+            <log message="Report status: ${in.header.CamelSchematronValidationStatus}" />
+            <setBody>
+                <header>CamelSchematronValidationReport</header>
+            </setBody>
+        </route>
+
+    </camelContext>
+
+
+</blueprint>

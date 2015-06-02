@@ -2,7 +2,9 @@
  * $$Id: Activator 16/05/15 23:37 akhettar $$
  * $$Copyright: Copyright 2014 INPS.co.uk, L.P. All rights reserved. $$
  */
-package co.zotix.schematron;/**
+package co.zotix.schematron;
+
+/**
  * Created by akhettar on 16/05/15.
  */
 
@@ -18,7 +20,6 @@ import org.slf4j.LoggerFactory;
 /**
  * Activator for Schematron service
  *
- * @author efthimios.kartsonakis
  */
 public class Activator implements BundleActivator {
     private static final transient Logger LOG = LoggerFactory.getLogger(Activator.class);
