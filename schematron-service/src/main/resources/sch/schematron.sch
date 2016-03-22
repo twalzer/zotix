@@ -24,10 +24,8 @@
 
 
     <!-- Your constraints go here -->
-    <sch:pattern>
-        <sch:rule context="chapter | p:chapter">
-            <sch:assert test="title | p:title">A chapter should have a title</sch:assert>
-        </sch:rule>
-    </sch:pattern>
+        <sch:pattern>
+            <sch:include href="sch/include/rules.sch"/>
+        </sch:pattern>
 
 </sch:schema>
