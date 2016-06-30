@@ -4,18 +4,18 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
                  http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.org/repos/asf/aries/trunk/blueprint/blueprint-cm/src/main/resources/org/apache/aries/blueprint/compendium/cm/blueprint-cm-1.1.0.xsd">
 
-	<cm:property-placeholder
-			id="co.zotix.schematron.config"
-			persistent-id="co.zotix.schematron.config">
+    <cm:property-placeholder
+            id="co.zotix.schematron.config"
+            persistent-id="co.zotix.schematron.config">
 
         <cm:default-properties>
-			<!-- Endpoint Configuration -->
-            <cm:property name="schematron.endpoint" value="schematron://sch/schematron.sch" />
-            <cm:property name="rest.port" value="9090" />
-            <cm:property name="rest.host" value="localhost" />
-            <cm:property name="prefix" value="Blueprint-Example" />
+            <!-- Endpoint Configuration -->
+            <cm:property name="schematron.endpoint" value="schematron:///tmp/schematron/sch/schematron.sch"/>
+            <cm:property name="rest.port" value="9090"/>
+            <cm:property name="rest.host" value="localhost"/>
+            <cm:property name="prefix" value="Blueprint-Example"/>
 
-		</cm:default-properties>
-	</cm:property-placeholder>
+        </cm:default-properties>
+    </cm:property-placeholder>
 
 </blueprint>

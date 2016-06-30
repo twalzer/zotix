@@ -25,7 +25,7 @@
 
     <!-- Your constraints go here -->
         <sch:pattern>
-            <sch:include href="sch/include/rules.sch"/>
+            <sch:include href="../sch/include/rules.sch"/>
         </sch:pattern>
 
 </sch:schema>

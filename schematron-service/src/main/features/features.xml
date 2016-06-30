@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <features>
-    <repository name="camel" version="2.16.1">
+    <repository name="camel" version="2.16.3">
         mvn:org.apache.camel.karaf/apache-camel/2.16.1/xml/features
     </repository>
     <feature name="schematron-service" version="1.0.0">
-        <feature dependency="true" version="2.16.1">camel</feature>
-        <feature dependency="true" version="2.16.1">camel-schematron</feature>
-        <feature dependency="true" version="2.16.1">camel-netty-http</feature>
+        <feature dependency="true" version="2.16.3">camel</feature>
+        <feature dependency="true" version="2.16.3">camel-schematron</feature>
+        <feature dependency="true" version="2.16.3">camel-netty</feature>
+        <feature dependency="true" version="2.16.3">camel-netty-http</feature>
         <bundle>mvn:co.zotix.schematron/schematron-service/1.0.0</bundle>
     </feature>
 
