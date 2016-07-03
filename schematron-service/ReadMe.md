@@ -16,6 +16,11 @@ or Apache Karaf. You can run the following command from its shell:
     features:addurl mvn:co.zotix.schematron/schematron-service/1.0.0/xml/features
     features:install schematron-service
 
+on newer versions (Apache Karaf >= 4.0) run:
+
+    feature:repo-add mvn:co.zotix.schematron/schematron-service/1.0.0/xml/features
+    feature:install schematron-service
+    
 if you run: osgi:list  You should see the service up and runing on port 9090.
 
 
