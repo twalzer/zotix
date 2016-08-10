@@ -10,7 +10,7 @@
 
         <cm:default-properties>
             <!-- Endpoint Configuration -->
-            <cm:property name="schematron.endpoint" value="schematron:///tmp/schematron/sch/schematron.sch"/>
+            <cm:property name="schematron.endpoint" value="schematron:sch/schematron.sch"/>
             <cm:property name="rest.port" value="9090"/>
             <cm:property name="rest.host" value="localhost"/>
             <cm:property name="prefix" value="Blueprint-Example"/>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doc>
     <chapter id="c1">
+        <title>chapter title</title>
         <para>Chapter content</para>
     </chapter>
     <chapter id="c2">
@@ -8,6 +9,7 @@
         <para>Content</para>
     </chapter>
     <chapter id="c3">
-        <para>Chapter 3 content, damn I have no title element</para>
+        <title>Title</title>
+        <para>Chapter 3 content</para>
     </chapter>
 </doc>

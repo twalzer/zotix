@@ -19,8 +19,19 @@ public class RouteTest extends CamelBlueprintTestSupport {
     }
 
     @Test
-    public void testRoute() throws Exception {
+    public void testRouteOk() throws Exception {
         InputStream payload = ClassLoader.getSystemResourceAsStream("input.xml");
+        String report = IOUtils.toString(ClassLoader.getSystemResourceAsStream("report.txt"));
+        Exchange in = createExchangeWithBody(context, payload);
+
+        Exchange result = template.send("direct:validate", in);
+
+        assertTrue(XMLUnit.compareXML(report, result.getIn().getBody(String.class)).similar());
+    }
+	
+	@Test
+    public void testRouteNotOk() throws Exception {
+        InputStream payload = ClassLoader.getSystemResourceAsStream("input-error.xml");
         String report = IOUtils.toString(ClassLoader.getSystemResourceAsStream("report.txt"));
         Exchange in = createExchangeWithBody(context, payload);
 

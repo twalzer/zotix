@@ -6,7 +6,7 @@
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
 
-    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="scheamtron.sample">
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="schematron.sample">
 
         <!-- explicitly set properties locations in blueprint -->
         <propertyPlaceholder id="properties" location="blueprint:co.zotix.schematron.config"/>
@@ -19,14 +19,21 @@
                 <to uri="direct:validate" />
             </post>
         </rest>
+        
+        <route id="file.validation">
+        	<from uri="file:in/validate?noop=true"/>
+        	<to uri="direct:validate"/>
+        </route>
 
         <route id="schematron.validation">
             <from uri="direct:validate"/>
+            <log message="Message received ${body}"/>
             <to uri="{{schematron.endpoint}}"/>
             <log message="Report status: ${in.header.CamelSchematronValidationStatus}" />
             <setBody>
                 <header>CamelSchematronValidationReport</header>
             </setBody>
+            <log message="SchematronValidationReport: ${body}"/>
         </route>
 
     </camelContext>
